@@ -33,21 +33,6 @@ Technologies Used
 - Render  
 
 ---
-
-Project Structure
-
-```text
-blue-green-deployment/
-│── app.py
-│── requirements.txt
-│── static/
-│── templates/
-│── README.md`
-
-- First open → Blue Version  
-- Refresh page → Green Version  
-
----
 Features
 🔵 Blue Version
 Stable production environment
@@ -70,3 +55,18 @@ Blue-Green Deployment Workflow
 -Green environment is tested
 -Traffic is switched from Blue → Green
 -Zero downtime achieved
+
+---
+
+Project Structure
+
+```text
+blue-green-deployment/
+│── app.py
+│── requirements.txt
+│── static/
+│── templates/
+│── README.md`
+
+---
+
