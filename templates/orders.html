@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="header">
+    <h1 class="title">📦 My Orders</h1>
+
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/cart">Cart</a>
+    </div>
+</header>
+
+{% if orders|length == 0 %}
+
+<h2 style="text-align:center; margin-top:50px;">
+    No orders yet 😕
+</h2>
+
+{% else %}
+
+{% for order in orders %}
+<div class="order-box">
+
+    <h3>👤 {{ order.name }}</h3>
+    <p>📍 {{ order.address }}</p>
+
+    <h4>🛍️ Items:</h4>
+
+    <ul>
+    {% for item in order.items %}
+        <li>{{ item.name }} - ₹{{ item.price }}</li>
+    {% endfor %}
+    </ul>
+
+</div>
+{% endfor %}
+
+{% endif %}
+
+</body>
+</html>

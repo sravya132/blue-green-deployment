@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ElectroMart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="header">
+
+    <!-- CLOUD BADGE -->
+    <div class="sale-badge">
+        🔥 Big Sale Live
+    </div>
+
+    <div class="header-center">
+
+        <h1 class="title">⚡ ElectroMart</h1>
+
+        <div class="nav">
+            <a href="/">Home</a>
+            <a href="/cart">Cart 🛍️ ({{ cart|length }})</a>
+        </div>
+
+        <!-- USER -->
+        {% if user %}
+        <p>Welcome {{ user }} |
+            <a href="/logout">Logout</a> |
+            <a href="/orders">My Orders</a>
+        </p>
+        {% else %}
+        <p>
+            <a href="/login">Login</a> |
+            <a href="/signup">Signup</a>
+        </p>
+        {% endif %}
+
+        <!-- SALE TEXT -->
+        <div class="sale-text">
+            🔥 Big Electronics Sale 🔥
+            <p>Up to 50% OFF on all gadgets</p>
+        </div>
+
+    </div>
+
+</header>
+
+<!-- SEARCH -->
+<form method="GET" class="search-bar">
+    <input name="q" placeholder="Search...">
+
+    <select name="category">
+        <option value="">All</option>
+        <option>Mobiles</option>
+        <option>Laptops</option>
+        <option>Accessories</option>
+        <option>Electronics</option>
+    </select>
+
+    <select name="price">
+        <option value="">Any Price</option>
+        <option value="1000">Below 1k</option>
+        <option value="5000">Below 5k</option>
+        <option value="20000">Below 20k</option>
+        <option value="50000">Below 50k</option>
+    </select>
+
+    <button class="btn">Search</button>
+</form>
+
+<!-- PRODUCTS -->
+<div class="products">
+
+{% for p in products %}
+<div class="card">
+
+    <img src="{{ url_for('static', filename=p.img) }}">
+
+    <h3>{{ p.name }}</h3>
+    <p>₹{{ p.price }}</p>
+
+    <p class="rating">⭐ {{ p.rating }}</p>
+
+    <p class="stock">
+        {% if p.stock > 0 %}In Stock{% else %}Out of Stock{% endif %}
+    </p>
+
+    <form action="/add/{{p.id}}" method="POST">
+        <button class="btn">Add to Cart</button>
+    </form>
+
+</div>
+{% endfor %}
+
+</div>
+
+</body>
+</html>
