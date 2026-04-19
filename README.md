@@ -48,3 +48,25 @@ blue-green-deployment/
 - Refresh page → Green Version  
 
 ---
+Features
+🔵 Blue Version
+Stable production environment
+Basic UI theme
+Product listing
+Cart support
+
+🟢 Green Version
+Enhanced modern UI
+Search & Filters
+Login / Signup
+Cart & Checkout
+Orders page
+
+---
+
+Blue-Green Deployment Workflow
+-Existing users are served through Blue environment
+-New version is deployed in Green environment
+-Green environment is tested
+-Traffic is switched from Blue → Green
+-Zero downtime achieved
